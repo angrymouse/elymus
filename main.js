@@ -23,7 +23,7 @@
 	]);
 	const path = require("path");
 	const fs = require("fs");
-	let IPFS = await import("ipfs");
+	let IPFS = await import("ipfs-core");
 	let mime = require("mime");
 	let yauzl = require("yauzl");
 	let fetchMethods = require("./fetchMethods/combine");
