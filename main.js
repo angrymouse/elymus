@@ -8,7 +8,7 @@
 		session,
 		protocol,
 	} = require("electron");
-
+	if (require("electron-squirrel-startup")) return app.quit();
 	protocol.registerSchemesAsPrivileged([
 		{
 			scheme: "repens",
@@ -38,10 +38,6 @@
 			force: true,
 		});
 	}
-	global.ipfs = await IPFS.create({
-		repoAutoMigrate: true,
-		repo: path.join(require("os").homedir(), ".elymus-ipfs"),
-	});
 
 	const { dns } = require("bns");
 
@@ -125,6 +121,10 @@
 			}
 		} catch (e) {
 			try {
+				global.ipfs = await IPFS.create({
+					repoAutoMigrate: true,
+					repo: path.join(require("os").homedir(), ".elymus-ipfs"),
+				});
 				ipcMain.handle("get-store-value", (event, key) => {
 					return store.get(key);
 				});

@@ -1,6 +1,6 @@
 {
   "name": "elymus",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Censorship resistance at highest level",
   "main": "main.js",
   "repository": "https://github.com/angrymouse/elymus",
@@ -21,6 +21,7 @@
     "make": "electron-forge make"
   },
   "dependencies": {
+    "@reforged/maker-appimage": "^1.2.1",
     "bns": "^0.15.0",
     "bs58": "^5.0.0",
     "cids": "^1.1.9",
@@ -38,28 +39,30 @@
   "config": {
     "forge": {
       "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "elymus"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
+      "makers": [{
+        "name": "@electron-forge/maker-squirrel",
+        "config": {
+          "name": "elymus"
         }
-      ]
+      }, {
+        "name": "@reforged/maker-appimage",
+        "config": {
+          "options": {
+
+            "name": "elymus",
+
+            "productName": "Elymus",
+
+            "genericName": "Elymus",
+
+            "icon": "./src/assets/logo-01.png",
+
+            "categories": ["Utility"],
+
+            "AppImageKitRelease": 12
+          }
+        }
+      }]
     }
   }
 }
