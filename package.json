@@ -48,12 +48,6 @@
         ]
       },
       "makers": [{
-        "name": "@electron-forge/maker-squirrel",
-        "config": {
-          "name": "elymus",
-          "icon": "logo.ico"
-        }
-      }, {
         "name": "@reforged/maker-appimage",
         "config": {
           "options": {
@@ -70,6 +64,12 @@
 
             "AppImageKitRelease": 12
           }
+        }
+      }, {
+        "name": "@electron-forge/maker-squirrel",
+        "config": {
+          "name": "elymus",
+          "icon": "./logo.ico"
         }
       }]
     }

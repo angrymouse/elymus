@@ -10,6 +10,8 @@ You can read how to make your frontend available through Repens protocol here: [
 
 Elymus is driven by decentralization-first convinience-last ideology. We have already seen many dWeb projects whose only relation to dWeb is that they utilize blockchains in some way. So we are ready to pay with convinience and heavyness for decentralization. We try to utilize lite nodes as much as we can. We try to builtin lite nodes for chains we use in this stack. Where lite nodes are not available, we still use endpoints, but no endpoints are hardcoded, and user can configure every endpoint anytime. We expose these endpoints from user's settings to Repens-based sites and we strongly encourage to use endpoint from user-preferences instead of own hardcoded endpoints.
 
+You can download Elymus on [releases page](https://github.com/angrymouse/elymus/releases/)
+
 TBD:
 - Add support for anchoring networks
 - Add builtin wallet SDK and builtin lite node for chain with smart contract support that has well support of lite nodes (Considering [Ergo](https://ergoplatform.org/en), but may be other chain)
