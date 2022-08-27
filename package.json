@@ -1,0 +1,74 @@
+{
+  "name": "elymus",
+  "version": "0.0.1",
+  "description": "Censorship resistance at highest level",
+  "main": "main.js",
+  "repository": "https://github.com/angrymouse/elymus",
+  "author": "Angrymouse <nik@hns.is>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.65",
+    "@electron-forge/maker-deb": "^6.0.0-beta.65",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.65",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.65",
+    "@electron-forge/maker-zip": "^6.0.0-beta.65",
+    "electron": "^20.0.3"
+  },
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "dependencies": {
+    "@ipld/dag-pb": "^2.1.17",
+    "bns": "^0.15.0",
+    "bs58": "^5.0.0",
+    "cids": "^1.1.9",
+    "daisyui": "^2.24.0",
+    "electron-serve": "^1.1.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^8.1.0",
+    "fastify": "^4.5.2",
+    "ipfs": "^0.63.5",
+    "ipfs-core": "^0.15.4",
+    "ipfs-unixfs-importer": "^10.0.1",
+    "ipld": "^0.30.2",
+    "ipld-in-memory": "^8.0.0",
+    "mime": "^3.0.0",
+    "multiformats": "^9.7.1",
+    "multihashing-async": "^2.1.4",
+    "node-stream-zip": "^1.15.0",
+    "pull-stream": "^3.6.14",
+    "pull-stream-to-async-iterator": "^1.0.2",
+    "undici": "^5.9.1",
+    "yauzl": "^2.10.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "elymus"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
+}
