@@ -38,11 +38,20 @@
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "asar": true,
+        "ignore": [
+          "^\\/src$",
+          "^\\/node_modules$",
+          "^\\/src/node_modules$",
+          "^\\/out$"
+        ]
+      },
       "makers": [{
         "name": "@electron-forge/maker-squirrel",
         "config": {
-          "name": "elymus"
+          "name": "elymus",
+          "icon": "logo.ico"
         }
       }, {
         "name": "@reforged/maker-appimage",
