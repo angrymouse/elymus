@@ -23,7 +23,12 @@
 	]);
 	const path = require("path");
 	const fs = require("fs");
+	const serve = require("electron-serve");
+	const loadURL = serve({
+		directory: path.join(__dirname, "ui-static", "public"),
+	});
 	let IPFS = await import("ipfs-core");
+
 	let mime = require("mime");
 	let yauzl = require("yauzl");
 	let fetchMethods = require("./fetchMethods/combine");
@@ -90,7 +95,7 @@
 			win = null;
 		});
 
-		win.loadURL("http://localhost:3000");
+		loadURL(win);
 	};
 
 	app.on("window-all-closed", () => {

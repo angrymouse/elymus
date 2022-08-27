@@ -4,6 +4,10 @@ import { defineNuxtConfig } from 'nuxt'
 export default defineNuxtConfig({
   target: 'static',
   mode: 'spa',
+  generate: {
+    dir: "../ui-static",
+    fallback:"404.html",
+  },
   ssr: false,
   modules: ['@nuxtjs/tailwindcss'],
       colorMode: {
