@@ -10,6 +10,7 @@
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.65",
     "@electron-forge/maker-deb": "^6.0.0-beta.65",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.65",
     "@electron-forge/maker-rpm": "^6.0.0-beta.65",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.65",
     "@electron-forge/maker-zip": "^6.0.0-beta.65",
@@ -55,7 +56,8 @@
         "icon": "build/icon.ico",
         "name": "Elymus"
       },
-      "makers": [{
+      "makers": [
+        {
           "name": "@reforged/maker-appimage",
           "config": {
             "options": {
@@ -82,6 +84,13 @@
             "authors": [
               "Angrymouse <nik@hns.is>"
             ]
+          }
+        },
+        {
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "background": "./src/assets/elymus-01.png",
+            "format": "ULFO"
           }
         }
       ]
