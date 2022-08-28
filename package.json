@@ -30,12 +30,17 @@
     "bs58": "^5.0.0",
     "cids": "^1.1.9",
     "daisyui": "^2.24.0",
+    "electron-builder-squirrel-windows": "^23.4.0",
+    "electron-forge-maker-nsis": "^23.4.0",
     "electron-serve": "^1.1.0",
+    "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.1.0",
+    "electron-unhandled": "^4.0.1",
     "fastify": "^4.5.2",
-    "ipfs-core": "^0.15.4",
+    "ipfs": "^0.63.5",
     "mime": "^3.0.0",
     "multiformats": "^9.7.1",
+    "pino": "^8.4.2",
     "undici": "^5.9.1",
     "yauzl": "^2.10.0"
   },
@@ -67,7 +72,7 @@
           }
         },
         {
-          "name": "@electron-forge/maker-squirrel",
+          "name": "electron-forge-maker-nsis",
           "config": {
             "name": "elymus",
             "setupIcon": "icon.ico",
@@ -84,11 +89,17 @@
     }
   },
   "build": {
+    "asar": false,
     "productName": "Elymus",
     "copyright": "Angrymouse",
     "appId": "dweb.elymus.repens",
     "mac": {
       "category": "utility"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
     }
   }
 }

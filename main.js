@@ -7,27 +7,39 @@ const {
 	session,
 	protocol,
 } = require("electron");
+const pino = require("pino");
 
-(async () => {
-	protocol.registerSchemesAsPrivileged([
-		{
-			scheme: "repens",
-			privileges: {
-				bypassCSP: true,
-				secure: true,
-				standard: true,
-				supportFetchAPI: true,
-				allowServiceWorkers: true,
-			},
+const fs = require("fs");
+const path = require("path");
+const logger = pino(
+	pino.destination(
+		path.join(
+			require("os").homedir(),
+			"elymus-fastify-log-" + Date.now() + ".txt"
+		)
+	)
+);
+protocol.registerSchemesAsPrivileged([
+	{
+		scheme: "repens",
+		privileges: {
+			bypassCSP: true,
+			secure: true,
+			standard: true,
+			supportFetchAPI: true,
+			allowServiceWorkers: true,
 		},
-	]);
-	const path = require("path");
-	const fs = require("fs");
-	const serve = require("electron-serve");
-	const loadURL = serve({
-		directory: path.join(__dirname, "ui-static", "public"),
-	});
-	let IPFS = await import("ipfs-core");
+	},
+]);
+const serve = require("electron-serve");
+const loadURL = serve({
+	directory: path.join(__dirname, "ui-static", "public"),
+});
+const unhandled = require("electron-unhandled");
+
+unhandled();
+async function startup() {
+	let IPFS = await import("ipfs");
 
 	let mime = require("mime");
 	let yauzl = require("yauzl");
@@ -97,7 +109,7 @@ const {
 	app.on("window-all-closed", () => {
 		win = null;
 	});
-	const fastify = require("fastify")({ logger: true });
+	const fastify = require("fastify")({ logger });
 
 	// Declare a route
 	fastify.get("/show", async (request, reply) => {
@@ -117,7 +129,7 @@ const {
 		try {
 			let { body } = await request("http://localhost:11984/show");
 			if ((await body.json()).okay) {
-				return app.quit();
+				return app.exit();
 			}
 		} catch (e) {
 			try {
@@ -334,17 +346,9 @@ const {
 			}
 		}
 	};
-	app.on("before-quit", async (event) => {
-		event.preventDefault();
 
-		await ipfs.stop();
-		app.exit();
-	});
 	app.whenReady().then(() => {
 		start(app);
 	});
-	process.on("beforeExit", () => {
-		ipfs.stop();
-		return false;
-	});
-})();
+}
+startup();
