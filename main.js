@@ -1,14 +1,14 @@
+const {
+	app,
+	BrowserWindow,
+	Menu,
+	Tray,
+	ipcMain,
+	session,
+	protocol,
+} = require("electron");
+
 (async () => {
-	const {
-		app,
-		BrowserWindow,
-		Menu,
-		Tray,
-		ipcMain,
-		session,
-		protocol,
-	} = require("electron");
-	if (require("electron-squirrel-startup")) return app.quit();
 	protocol.registerSchemesAsPrivileged([
 		{
 			scheme: "repens",

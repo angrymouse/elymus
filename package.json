@@ -13,21 +13,24 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.65",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.65",
     "@electron-forge/maker-zip": "^6.0.0-beta.65",
-    "electron": "^20.0.3"
+    "electron": "^20.0.3",
+    "electron-builder": "^23.3.3"
   },
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "postinstall": "electron-builder install-app-deps",
+    "app:dist": "electron-builder"
   },
   "dependencies": {
+    "@electron-forge/maker-wix": "^6.0.0-beta.65",
     "@reforged/maker-appimage": "^1.2.1",
     "bns": "^0.15.0",
     "bs58": "^5.0.0",
     "cids": "^1.1.9",
     "daisyui": "^2.24.0",
     "electron-serve": "^1.1.0",
-    "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.1.0",
     "fastify": "^4.5.2",
     "ipfs-core": "^0.15.4",
@@ -42,36 +45,50 @@
         "asar": true,
         "ignore": [
           "^\\/src$",
-          "^\\/node_modules$",
-          "^\\/src/node_modules$",
           "^\\/out$"
-        ]
+        ],
+        "icon": "build/icon.ico",
+        "name": "Elymus"
       },
-      "makers": [{
-        "name": "@reforged/maker-appimage",
-        "config": {
-          "options": {
-
+      "makers": [
+        {
+          "name": "@reforged/maker-appimage",
+          "config": {
+            "options": {
+              "name": "Elymus",
+              "productName": "Elymus",
+              "genericName": "Elymus",
+              "icon": "./src/assets/logo-01.png",
+              "categories": [
+                "Utility"
+              ],
+              "AppImageKitRelease": 12
+            }
+          }
+        },
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
             "name": "elymus",
-
-            "productName": "Elymus",
-
-            "genericName": "Elymus",
-
-            "icon": "./src/assets/logo-01.png",
-
-            "categories": ["Utility"],
-
-            "AppImageKitRelease": 12
+            "setupIcon": "icon.ico",
+            "iconUrl": "https://raw.githubusercontent.com/angrymouse/elymus/master/logo.ico",
+            "title": "Elymus",
+            "appDirectory": ".",
+            "outputDirectory": "out",
+            "authors": [
+              "Angrymouse <nik@hns.is>"
+            ]
           }
         }
-      }, {
-        "name": "@electron-forge/maker-squirrel",
-        "config": {
-          "name": "elymus",
-          "icon": "./logo.ico"
-        }
-      }]
+      ]
+    }
+  },
+  "build": {
+    "productName": "Elymus",
+    "copyright": "Angrymouse",
+    "appId": "dweb.elymus.repens",
+    "mac": {
+      "category": "utility"
     }
   }
 }
