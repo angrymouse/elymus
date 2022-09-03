@@ -18,3 +18,10 @@ After this, you should get zip file with contents of your site.
 ## Getting hash of ZIP archive
 Now you need sha256 hash of archive (in hex encoding) that you got in previous step. Easiest way to get it is to upload archive to [this site](https://emn178.github.io/online-tools/sha256_checksum.html).
 
+Put it somewhere (you can open notepad/notes app and insert it here, you will need it later).
+## Uploading archive to various resources
+Now you need to upload this archive to IPFS, for effective p2p caching, and to other resource (Arweave/skynet/somewhere else) for anchoring (pinning, making data available when no peers are online).
+
+Uploading to IPFS is important: When person will visit your website via Elymus or other Repens protocol implementation, he will download archive and seed it to other users, making it more decentralized.
+
+So, download [IPFS Desktop](https://github.com/ipfs/ipfs-desktop/releases), and add your ZIP archive here.
