@@ -21,7 +21,7 @@ Repens content resource (Domain name in common internet) is root handshake name 
 
 Handshake domain for Repens should contain following records:
 
-1. Record that indicates that name supports Repens protocol
+ 1. Record that indicates that name supports Repens protocol
 
   Type:`TXT`
 
