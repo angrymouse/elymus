@@ -25,3 +25,15 @@ Now you need to upload this archive to IPFS, for effective p2p caching, and to o
 Uploading to IPFS is important: When person will visit your website via Elymus or other Repens protocol implementation, he will download archive and seed it to other users, making it more decentralized.
 
 So, download [IPFS Desktop](https://github.com/ipfs/ipfs-desktop/releases), and add your ZIP archive here.
+
+Then, copy CID that you got and write it somewhere (notes app/notepad). You will need it at the stage of setting records for your handshake name.
+
+Now upload it to arweave/skynet. It is needed because sometimes there's no peers who will seed your ZIP archive, and we don't want to fallback to centralizing pinning like Pinata or instable solutions like Filecoin.
+
+This step won't be detaily described in this guide: You can find bunch of resources in internet about how to upload data to arweave/skynet. Just remember that you need to write down content IDs for usage in next step (for arweave it's transaction ID, for skynet it's skylink).
+
+## Getting Handshake name and setting records
+
+Now get [Handshake](https://handshake.org) name. You can buy it on [Namebase](https://namebase.io), win on auction via [Bob Wallet](https://bobwallet.io) (or namebase), or get random one for free in one of Handshake communities. One of popular ones is here: https://discord.gg/vcM3bnhn2U
+
+Now, after you have name, set root zone's records as described in [Repens protocol specification](REPENS_PROTOCOL_SPEC.md)
