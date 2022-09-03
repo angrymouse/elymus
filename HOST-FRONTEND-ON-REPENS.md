@@ -21,7 +21,7 @@ Repens content resource (Domain name in common internet) is root handshake name 
 
 Handshake domain for Repens should contain following records:
 
- 1. Record that indicates that name supports Repens protocol
+ > Record that indicates that name supports Repens protocol
 
   Type:`TXT`
 
@@ -29,7 +29,7 @@ Handshake domain for Repens should contain following records:
 
   Content:`repensprotocol=enabled`
 
-2. Record that tells hash of data, to avoid scenarios when some of ways is broken and serves incorrect info
+> Record that tells hash of data, to avoid scenarios when some of ways is broken and serves incorrect info
 
   Type:`TXT`
 
@@ -39,7 +39,7 @@ Handshake domain for Repens should contain following records:
 
   Where `<sha256 hex>` is sha256 of ZIP archive with site's content encoded in HEX encoding (e.g `02C29C6A6882222EF720E18D016D9ED52001AE3BA2552E2A7675F465C5012774`)
 
-3. Ways to retrive data. (There can be multiple records of this type)
+> Ways to retrive data. (There can be multiple records of this type)
 
   Type:`TXT`
   
