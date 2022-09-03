@@ -25,15 +25,11 @@ Handshake domain for Repens should contain following records:
 
   Type:`TXT`
 
-  Name:` ` (empty)
-
   Content:`repensprotocol=enabled`
 
 > Record that tells hash of data, to avoid scenarios when some of ways is broken and serves incorrect info
 
   Type:`TXT`
-
-  Name:` ` (empty)
 
   Content:`data_hash=<sha256 hex>`
 
@@ -42,8 +38,6 @@ Handshake domain for Repens should contain following records:
 > Ways to retrive data. (There can be multiple records of this type)
 
   Type:`TXT`
-  
-  Name:` ` (empty)
 
   Content:`data_way=<way type>:<way content id>`
 
