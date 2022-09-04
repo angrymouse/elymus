@@ -1,5 +1,8 @@
 # Elymus: Platform & Stack for true decentralized apps
+
 ![icon](icon.png)
+
+
 Elymus is stack for dWeb: Browser, SDK, and bundle of nodes for p2p communication.
 
 It uses Repens protocol for dWeb sites (however you can access usual web2 sites through it, better use normal browser when doing it), developed to provide absolutely decentralized way to host and access frontends.
