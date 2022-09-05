@@ -103,6 +103,11 @@
     "mac": {
       "category": "utility"
     },
+    "files": [
+      "!out",
+      "!dist",
+      "!src"
+    ],
     "win": {
       "target": [
         "nsis"
