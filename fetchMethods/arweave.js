@@ -1,8 +1,7 @@
-module.exports = (cid, dataHash,store) => {
+module.exports = (cid, dataHash, store) => {
 	return new Promise(async (resolve, reject) => {
-
 		const crypto = require("crypto");
-
+		const { request } = require("undici");
 		const Stream = require("node:stream");
 
 		const dataContentStream = new Stream.PassThrough();
@@ -12,10 +11,21 @@ module.exports = (cid, dataHash,store) => {
 
 		// console.log(ipfs.files.get(new CID(cid)));
 		let filesize = 0;
-		for await (const buf of await download(`http://${await store.get("userSettings.arweaveGateway")}/${cid}`)) {
+
+		for await (const buf of streamgen(
+			(
+				await request(
+					`http://${await store.get("userSettings.arweaveGateway")}/${cid}`,
+					{
+						maxRedirections: 3,
+					}
+				)
+			).body
+		)) {
 			if (filesize >= 536870912) {
 				break; //not gonna download something more than 512 mb
 			}
+
 			hash.update(Buffer.from(buf));
 			dataContentStream.write(Buffer.from(buf));
 			filesize += buf.length;
@@ -31,10 +41,24 @@ module.exports = (cid, dataHash,store) => {
 		}
 	});
 };
-async function* download(uri) {
-	const { request } = require("undici");
-	const { body, headers, statusCode, trailers } = await request(uri,{maxRedirections:3});
-	body.on("data", (buf) => {
-	  yield buf
-  });
+async function* streamgen(readable) {
+	let ended = false;
+	const onEnded = new Promise((res, rej) => {
+		readable.once("error", rej);
+		readable.once("end", () => {
+			ended = true;
+			res();
+		});
+	});
+
+	while (!ended) {
+		const chunk = readable.read();
+		if (chunk !== null) {
+			yield chunk;
+			continue;
+		}
+
+		const onReadable = new Promise((res) => readable.once("readable", res));
+		await Promise.race([onEnded, onReadable]);
+	}
 }
