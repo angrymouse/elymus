@@ -241,7 +241,7 @@ async function startup() {
 				});
 				return;
 			}
-			console.log(txtMap);
+
 			for (const way of txtMap.data_way) {
 				if (way.split(":").length != 2) {
 					continue;
@@ -257,7 +257,7 @@ async function startup() {
 					continue;
 				} else {
 					let rawArchiveChunks = [];
-					console.log(cid);
+
 					for await (bf of ipfs.cat(cid)) {
 						rawArchiveChunks.push(bf);
 					}
