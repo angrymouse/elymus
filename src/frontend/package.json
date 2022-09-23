@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate&&ncp ./dist/ ../../build/ui",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "ncp": "^2.0.0",
+    "nuxt": "3.0.0-rc.11"
+  },
+  "dependencies": {}
+}
