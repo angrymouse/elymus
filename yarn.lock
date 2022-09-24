@@ -1166,9 +1166,9 @@
     "@types/node" "*"
 
 "@types/node@*", "@types/node@>=13.7.0", "@types/node@^18.0.0":
-  version "18.7.18"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.18.tgz#633184f55c322e4fb08612307c274ee6d5ed3154"
-  integrity sha512-m+6nTEOadJZuTPkKR/SYK3A2d7FZrgElol9UP1Kae90VVU4a6mxnPuLiIW1m4Cq4gZ/nWb9GrdVXJCoCazDAbg==
+  version "18.7.19"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.19.tgz#ad83aa9b7af470fab7e0f562be87e97dc8ffe08e"
+  integrity sha512-Sq1itGUKUX1ap7GgZlrzdBydjbsJL/NSQt/4wkAxUJ7/OS5c2WkoN6WSpWc2Yc5wtKMZOUA0VCs/j2XJadN3HA==
 
 "@types/retry@0.12.1":
   version "0.12.1"
@@ -1404,10 +1404,10 @@ blockstore-datastore-adapter@^3.0.0:
     it-pushable "^3.1.0"
     multiformats "^9.1.0"
 
-bns@^0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/bns/-/bns-0.15.0.tgz#147d0f20702c699af5ced0199c8691a4c1d43ffb"
-  integrity sha512-iJWQVE399vQzPfhalFMJGEQ7k5Ot2D6Mz8dkoPeLO8huWAMOiJNJ1tHzOu5j+ZyNNew6ITgG/LsSyaRPxvkXuw==
+bns-plus@^0.15.2:
+  version "0.15.2"
+  resolved "https://registry.yarnpkg.com/bns-plus/-/bns-plus-0.15.2.tgz#42c5f5329ca295424fbda25aee77410140a7dd93"
+  integrity sha512-WTKqiBowPb+alo7/bFs1AkzphT+IDRCkq6msPztFrEanNRbFooXG+XtjF5iPXItbcN5me717jGVnuD8kAfn+NQ==
   dependencies:
     bcrypto "~5.4.0"
     bfile "~0.2.2"
@@ -2339,12 +2339,12 @@ hashlru@^2.3.0:
   resolved "https://registry.yarnpkg.com/hashlru/-/hashlru-2.3.0.tgz#5dc15928b3f6961a2056416bb3a4910216fdfb51"
   integrity sha512-0cMsjjIC8I+D3M44pOQdsy0OHXGLVz6Z0beRuufhKa0KfaD2wGwAev6jILzXsd3/vpnNQJmWyZtIILqM1N+n5A==
 
-hnsd.js@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/hnsd.js/-/hnsd.js-0.0.4.tgz#0035cf749e4b02631db9e0fdeaaec47f41e4e719"
-  integrity sha512-5MLCt88p/OSzDHDhL8XWqozq1p4PKpWYA9MsKIKnsQLJK+zq/WlnB8Ekddq9p4e3ZjzBAZNF4FPfTMpch+RIXw==
+hnsd.js@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/hnsd.js/-/hnsd.js-0.0.5.tgz#0cce78d17a358d95f39f9e7bbcb0d93b6cadb2c7"
+  integrity sha512-79s0nNGDk4NCxqyiygmsG9hRllh+CsxZMUKLzeWNsa7vVE2DBZUeJdGGytrfdJmTfkha7bOYbJEo62YnCBVeRg==
   dependencies:
-    bns "^0.15.0"
+    bns-plus "^0.15.2"
     get-port "^6.1.2"
 
 http-errors@2.0.0:
@@ -4483,7 +4483,7 @@ uint8arrays@^3.0.0, uint8arrays@^3.1.0:
   dependencies:
     multiformats "^9.4.2"
 
-unbound@^0.4.3, unbound@~0.4.3:
+unbound@~0.4.3:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/unbound/-/unbound-0.4.3.tgz#ca4e9a3c8b678df431ec576385acc8bff9aa439a"
   integrity sha512-2ISqZLXtzp1l9f1V8Yr6S+zuhXxEwE1CjKHjXULFDHJcfhc9Gm3mn19hdPp4rlNGEdCivKYGKjYe3WRGnafYdA==

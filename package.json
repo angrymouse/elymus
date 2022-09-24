@@ -9,13 +9,13 @@
   "private": false,
   "dependencies": {
     "@fastify/static": "^6.5.0",
-    "bns": "^0.15.0",
+    "bns-plus": "^0.15.2",
+    "classic-level": "^1.2.0",
     "fastify": "^4.6.0",
-    "hnsd.js": "^0.0.4",
+    "hnsd.js": "^0.0.5",
     "ipfs-core": "^0.16.1",
     "mime": "^3.0.0",
     "pino": "^8.6.0",
-    "unbound": "^0.4.3",
     "undici": "^5.10.0",
     "yauzl": "^2.10.0"
   },
@@ -27,5 +27,6 @@
   },
   "scripts": {
     "build-core": "node ./src/build.js"
-  }
+  },
+  "type": "module"
 }
