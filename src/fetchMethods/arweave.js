@@ -1,0 +1,63 @@
+import crypto from "crypto";
+import { request } from "undici";
+import Stream from "stream";
+export default (cid, dataHash) => {
+	return new Promise(async (resolve, reject) => {
+		const dataContentStream = new Stream.PassThrough();
+		ipfs.add({ content: dataContentStream }).then(finish);
+
+		let hash = crypto.createHash("sha256");
+
+		// console.log(ipfs.files.get(new CID(cid)));
+		let filesize = 0;
+
+		for await (const buf of streamgen(
+			(
+				await request(
+					`${await global.preferences.get("arweaveGateway")}/${cid}`,
+					{
+						maxRedirections: 3,
+					}
+				)
+			).body
+		)) {
+			if (filesize >= 536870912) {
+				break; //not gonna download something more than 512 mb
+			}
+
+			hash.update(Buffer.from(buf));
+			dataContentStream.write(Buffer.from(buf));
+			filesize += buf.length;
+		}
+		dataContentStream.end();
+		async function finish(result) {
+			if (hash.digest("hex").toLowerCase() == dataHash.toLowerCase()) {
+				resolve(result.cid);
+			} else {
+				await ipfs.pin.rm(result.cid);
+				resolve(null);
+			}
+		}
+	});
+};
+async function* streamgen(readable) {
+	let ended = false;
+	const onEnded = new Promise((res, rej) => {
+		readable.once("error", rej);
+		readable.once("end", () => {
+			ended = true;
+			res();
+		});
+	});
+
+	while (!ended) {
+		const chunk = readable.read();
+		if (chunk !== null) {
+			yield chunk;
+			continue;
+		}
+
+		const onReadable = new Promise((res) => readable.once("readable", res));
+		await Promise.race([onEnded, onReadable]);
+	}
+}

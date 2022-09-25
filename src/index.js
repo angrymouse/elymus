@@ -1,28 +1,35 @@
 import HNSDResolver from "hnsd.js";
 import * as IPFS from "ipfs-core";
-import pino from "pino";
 import fs from "fs";
 import path from "path";
 import { ClassicLevel } from "classic-level";
 import os from "os";
 import { PassThrough } from "stream";
 import defaultPreferences from "./default-preferences.json" assert { type: "json" };
+import startServeDaemon from "./serveDaemon.js";
+import { request } from "undici";
+import open from "open";
 if (!fs.existsSync(path.join(os.homedir(), "elymus"))) {
 	fs.mkdirSync(path.join(os.homedir(), "elymus"));
 	fs.mkdirSync(path.join(os.homedir(), "elymus", "logs"));
 }
 // ^ On first start we don't have folder for Elymus
-const logger = pino(
-	pino.destination(
-		path.join(
-			os.homedir(),
-			"elymus",
-			"logs",
-			"elymus-fastify-log-" + Date.now() + ".txt"
-		)
-	)
-);
-async function start() {
+
+async function checkDaemon() {
+	try {
+		let { body } = await request("http://localhost:1111/api/show");
+		if ((await body.json()).okay) {
+			console.log(
+				"Elymus daemon is already running, opened homepage in default browser"
+			);
+			return process.exit();
+		}
+	} catch (e) {
+		startDaemon();
+	}
+}
+
+async function startDaemon() {
 	global.preferences = new ClassicLevel(
 		path.join(os.homedir(), "elymus", "preferences-db"),
 		{ valueEncoding: "json", createIfMissing: true }
@@ -54,6 +61,10 @@ async function start() {
 		repo: path.join(os.homedir(), "elymus", "ipfs"),
 	});
 	global.hnsd = new HNSDResolver();
-	// ^ Start required daemons
+	hnsd.launch();
+	startServeDaemon();
+	// ^ Start required services
 }
-start();
+
+checkDaemon();
+// ^ Checking if Elymus daemon is already running, and running it if not running

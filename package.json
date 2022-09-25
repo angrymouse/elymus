@@ -10,11 +10,13 @@
   "dependencies": {
     "@fastify/static": "^6.5.0",
     "bns-plus": "^0.15.2",
+    "cids": "^1.1.9",
     "classic-level": "^1.2.0",
     "fastify": "^4.6.0",
     "hnsd.js": "^0.0.5",
     "ipfs-core": "^0.16.1",
     "mime": "^3.0.0",
+    "open": "^8.4.0",
     "pino": "^8.6.0",
     "undici": "^5.10.0",
     "yauzl": "^2.10.0"
