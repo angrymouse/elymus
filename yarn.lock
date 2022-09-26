@@ -2454,10 +2454,10 @@ hashlru@^2.3.0:
   resolved "https://registry.npmjs.org/hashlru/-/hashlru-2.3.0.tgz"
   integrity sha512-0cMsjjIC8I+D3M44pOQdsy0OHXGLVz6Z0beRuufhKa0KfaD2wGwAev6jILzXsd3/vpnNQJmWyZtIILqM1N+n5A==
 
-hnsd.js@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/hnsd.js/-/hnsd.js-0.0.6.tgz#4c89f27f2878b4b633e63fd675e9b9757af67ee2"
-  integrity sha512-GB2QjLUvJ/RCCXV2TKJoVPZdxr1tfPWV8nPFihTfOyCgoMkTAotJmUwTvi/ORVvrmekHxlquvp8ZqxIrEZ2T8g==
+hnsd.js@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/hnsd.js/-/hnsd.js-0.0.7.tgz#b14cc9f9ea5326294ad73b19d107dc5914fdd5e4"
+  integrity sha512-sIepAL2P2M2kTwOCjjfvZykhC3wZIEbNRfutgHwzFdiTPAmPZoFlOknu4ZnO7GIbIaOxjTF/QlvkR8dH5Q9t8Q==
   dependencies:
     bns-plus "^0.15.2"
     get-port "^6.1.2"

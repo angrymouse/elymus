@@ -14,7 +14,7 @@
     "cids": "^1.1.9",
     "classic-level": "^1.2.0",
     "fastify": "^4.6.0",
-    "hnsd.js": "^0.0.6",
+    "hnsd.js": "^0.0.7",
     "ipfs-core": "^0.16.1",
     "mime": "^3.0.0",
     "open": "^8.4.0",
