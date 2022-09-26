@@ -3,18 +3,6 @@ import yauzl from "yauzl";
 import mime from "mime";
 import * as fetchMethods from "../fetchMethods/combine.js";
 export default async function handleRepens(hnsName, request, reply, done) {
-	if (!global.hnsd.synced) {
-		reply
-			.code(503)
-			.send(
-				"Handshake node isn't synchronized yet! Try in few minutes. (Height " +
-					global.hnsd.height +
-					")"
-			);
-
-		return;
-	}
-
 	let domainInfo = await global.hnsd.rootResolver.resolveRaw(hnsName, "TXT");
 	let filepath;
 	if (request.url == "/") {

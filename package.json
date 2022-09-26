@@ -14,7 +14,7 @@
     "cids": "^1.1.9",
     "classic-level": "^1.2.0",
     "fastify": "^4.6.0",
-    "hnsd.js": "^0.0.5",
+    "hnsd.js": "^0.0.6",
     "ipfs-core": "^0.16.1",
     "mime": "^3.0.0",
     "open": "^8.4.0",
@@ -31,7 +31,8 @@
   },
   "scripts": {
     "mkbin:windows": "caxa --input ./ --output dist/elymus.exe {{caxa}}/node_modules/.bin/node {{caxa}}/src/index.js --exclude ./dist/* ./docs/* ./.git/*",
-    "mkbin:macos": "caxa --input ./ --output dist/elymus.app {{caxa}}/node_modules/.bin/node {{caxa}}/src/index.js --exclude ./dist/* ./docs/* ./.git/*"
+    "mkbin:macos": "caxa --input ./ --output dist/elymus.app {{caxa}}/node_modules/.bin/node {{caxa}}/src/index.js --exclude ./dist/* ./docs/* ./.git/*",
+    "mkbin:linux": "caxa --input ./ --output dist/elymus {{caxa}}/node_modules/.bin/node {{caxa}}/src/index.js --exclude ./dist/* ./docs/* ./.git/*"
   },
   "type": "module",
   "pkg": {
