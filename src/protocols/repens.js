@@ -53,7 +53,10 @@ export default async function handleRepens(hnsName, request, reply, done) {
 			});
 			return;
 		}
-
+		let priority = ["ipfs", "arweave"];
+		txtMap.data_way = txtMap.data_way.sort(
+			(a, b) => priority.indexOf(a) - priority.indexOf(b)
+		);
 		for (const way of txtMap.data_way) {
 			if (way.split(":").length != 2) {
 				continue;
